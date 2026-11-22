@@ -208,11 +208,11 @@ final class 详情控制器: UIViewController {
             滚动.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             滚动.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            竖.topAnchor.constraint(equalTo: 滚动.topAnchor),
-            竖.bottomAnchor.constraint(equalTo: 滚动.bottomAnchor),
-            竖.leadingAnchor.constraint(equalTo: 滚动.leadingAnchor, constant: 22),
-            竖.trailingAnchor.constraint(equalTo: 滚动.trailingAnchor, constant: -22),
-            竖.widthAnchor.constraint(equalTo: 滚动.widthAnchor, constant: -44),
+            竖.topAnchor.constraint(equalTo: 滚动.contentLayoutGuide.topAnchor),
+            竖.bottomAnchor.constraint(equalTo: 滚动.contentLayoutGuide.bottomAnchor),
+            竖.leadingAnchor.constraint(equalTo: 滚动.contentLayoutGuide.leadingAnchor, constant: 22),
+            竖.trailingAnchor.constraint(equalTo: 滚动.contentLayoutGuide.trailingAnchor, constant: -22),
+            竖.widthAnchor.constraint(equalTo: 滚动.frameLayoutGuide.widthAnchor, constant: -44),
 
             顶.widthAnchor.constraint(equalTo: 竖.widthAnchor),
             数行.widthAnchor.constraint(equalTo: 竖.widthAnchor),

@@ -168,11 +168,11 @@ final class 主控制器: UIViewController {
             滚动.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             滚动.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            内容.topAnchor.constraint(equalTo: 滚动.topAnchor),
-            内容.bottomAnchor.constraint(equalTo: 滚动.bottomAnchor),
-            内容.leadingAnchor.constraint(equalTo: 滚动.leadingAnchor, constant: 24),
-            内容.trailingAnchor.constraint(equalTo: 滚动.trailingAnchor, constant: -24),
-            内容.widthAnchor.constraint(equalTo: 滚动.widthAnchor, constant: -48),
+            内容.topAnchor.constraint(equalTo: 滚动.contentLayoutGuide.topAnchor),
+            内容.bottomAnchor.constraint(equalTo: 滚动.contentLayoutGuide.bottomAnchor),
+            内容.leadingAnchor.constraint(equalTo: 滚动.contentLayoutGuide.leadingAnchor, constant: 24),
+            内容.trailingAnchor.constraint(equalTo: 滚动.contentLayoutGuide.trailingAnchor, constant: -24),
+            内容.widthAnchor.constraint(equalTo: 滚动.frameLayoutGuide.widthAnchor, constant: -48),
 
             点数行.widthAnchor.constraint(equalTo: 内容.widthAnchor),
             小字行.widthAnchor.constraint(equalTo: 内容.widthAnchor),
@@ -365,11 +365,11 @@ final class 说明控制器: UIViewController {
             滚动.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             滚动.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            竖.topAnchor.constraint(equalTo: 滚动.topAnchor),
-            竖.bottomAnchor.constraint(equalTo: 滚动.bottomAnchor),
-            竖.leadingAnchor.constraint(equalTo: 滚动.leadingAnchor, constant: 22),
-            竖.trailingAnchor.constraint(equalTo: 滚动.trailingAnchor, constant: -22),
-            竖.widthAnchor.constraint(equalTo: 滚动.widthAnchor, constant: -44),
+            竖.topAnchor.constraint(equalTo: 滚动.contentLayoutGuide.topAnchor),
+            竖.bottomAnchor.constraint(equalTo: 滚动.contentLayoutGuide.bottomAnchor),
+            竖.leadingAnchor.constraint(equalTo: 滚动.contentLayoutGuide.leadingAnchor, constant: 22),
+            竖.trailingAnchor.constraint(equalTo: 滚动.contentLayoutGuide.trailingAnchor, constant: -22),
+            竖.widthAnchor.constraint(equalTo: 滚动.frameLayoutGuide.widthAnchor, constant: -44),
 
             关.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             关.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
