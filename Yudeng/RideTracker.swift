@@ -1,17 +1,17 @@
 import Foundation
 import CoreLocation
-import AVFoundation
 
 /// 骑行记录。安卓那边是前台服务，iOS 这边是 CoreLocation + 后台定位模式。
-final class 骑手: NSObject, ObservableObject, CLLocationManagerDelegate {
+/// 不带 Combine（iOS 12 没有），界面自己定时来读。
+final class 骑手: NSObject, CLLocationManagerDelegate {
 
     static let 共享 = 骑手()
 
-    @Published var 当前: 一趟?
-    @Published var 暂停中 = false
-    @Published var 速度Kmh = 0.0
-    @Published var 上次断裂: 一趟?
-    @Published var 授权 = CLAuthorizationStatus.notDetermined
+    var 当前: 一趟?
+    var 暂停中 = false
+    var 速度Kmh = 0.0
+    var 上次断裂: 一趟?
+    var 授权: CLAuthorizationStatus = .notDetermined
 
     private let 管 = CLLocationManager()
     private var 文件: URL?
@@ -26,7 +26,7 @@ final class 骑手: NSObject, ObservableObject, CLLocationManagerDelegate {
         管.activityType = .fitness
         管.allowsBackgroundLocationUpdates = true
         管.pausesLocationUpdatesAutomatically = false
-        授权 = 管.authorizationStatus
+        授权 = CLLocationManager.authorizationStatus()
         上次断裂 = 一趟.收拾断掉的()
     }
 
@@ -58,8 +58,7 @@ final class 骑手: NSObject, ObservableObject, CLLocationManagerDelegate {
         guard let t = 当前, !暂停中 else { return }
         暂停中 = true
         暂停起点 = Int64(Date().timeIntervalSince1970 * 1000)
-        _ = t
-        if let f = 文件 { 当前?.存(f) }
+        if let f = 文件 { t.存(f) }
     }
 
     func 继续() {
@@ -98,10 +97,16 @@ final class 骑手: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     // MARK: - 代理
 
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        授权 = status
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            manager.allowsBackgroundLocationUpdates = true
+        }
+    }
+
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        授权 = manager.authorizationStatus
+        授权 = CLLocationManager.authorizationStatus()
         if 授权 == .authorizedAlways || 授权 == .authorizedWhenInUse {
-            // 有授权才能开后台定位
             manager.allowsBackgroundLocationUpdates = true
         }
     }
