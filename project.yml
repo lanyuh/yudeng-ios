@@ -26,5 +26,4 @@ targets:
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: ""
         ENABLE_BITCODE: "NO"
-        SWIFT_OPTIMIZATION_LEVEL: "-Onone"
         GENERATE_INFOPLIST_FILE: "NO"
