@@ -1,0 +1,30 @@
+name: Yudeng
+options:
+  bundleIdPrefix: com.lanyu
+  deploymentTarget:
+    iOS: "12.0"
+  createIntermediateGroups: true
+  xcodeVersion: "15.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    IPHONEOS_DEPLOYMENT_TARGET: "12.0"
+
+targets:
+  Yudeng:
+    type: application
+    platform: iOS
+    sources:
+      - path: Yudeng
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lanyu.yudeng
+        PRODUCT_NAME: Yudeng
+        INFOPLIST_FILE: Yudeng/Info.plist
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+        ENABLE_BITCODE: "NO"
+        SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+        GENERATE_INFOPLIST_FILE: "NO"
