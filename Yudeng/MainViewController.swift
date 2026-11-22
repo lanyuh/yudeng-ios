@@ -1,4 +1,4 @@
-import UIKit
+﻿import UIKit
 
 /// 主界面。安卓 MainActivity 那一页，一样的东西。
 final class 主控制器: UIViewController {
@@ -205,6 +205,7 @@ final class 主控制器: UIViewController {
         客钮.setTitleColor(主 ? 色.主字 : 色.夜, for: .normal)
 
         // 点
+        let 点们 = 灯.点们
         let 签名 = 点们.map { "\($0.id):\($0.在说):\($0.是我)" }.joined(separator: ",")
         if 签名 != 上次点 {
             上次点 = 签名
